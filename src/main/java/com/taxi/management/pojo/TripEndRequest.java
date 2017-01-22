@@ -1,4 +1,4 @@
-package com.taxi.management.request;
+package com.taxi.management.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

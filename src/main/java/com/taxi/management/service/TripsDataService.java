@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.taxi.management.data.CustomerData;
 import com.taxi.management.data.TRIP_STATUS;
 import com.taxi.management.data.TripsData;
+import com.taxi.management.pojo.TripEndResponse;
 import com.taxi.management.repository.TripsDataRepository;
-import com.taxi.management.request.TripEndResponse;
 
 @Service
 public class TripsDataService {
@@ -33,16 +33,21 @@ public class TripsDataService {
 	public List<TripsData> getTripsDataByTripDate(Timestamp tripDate) {
 		return tripsDataRepository.findByTripDate(tripDate);
 	}
-	
+
+	public List<TripsData> getTripsDataBetweenDates(Timestamp tripStartDate, Timestamp tripEndDate) {
+		return tripsDataRepository.findByTripDateBetween(tripStartDate, tripEndDate);
+	}
+
 	public TripsData getOnGoingTripDataByCustomerMobileNumber(long mobileNumber) {
-		
+
 		CustomerData customerData = customerService.getCustomerDataWithMobileNumber(mobileNumber);
-		
-		if(customerData == null){
+
+		if (customerData == null) {
 			throw new IllegalArgumentException("No User registered (or) No On-Going trip");
 		}
-		
-		return tripsDataRepository.findByCustomerIdAndTripStatus(customerData.getCustomerId(), TRIP_STATUS.TRIP_STARTED.getTripStatus());
+
+		return tripsDataRepository.findByCustomerIdAndTripStatus(customerData.getCustomerId(),
+				TRIP_STATUS.TRIP_STARTED.getTripStatus());
 	}
 
 	public List<TripEndResponse> getTripInfoByCustomerId(int customerId) {
@@ -56,12 +61,12 @@ public class TripsDataService {
 		return tripDetails;
 	}
 
-	public List<TripEndResponse> getTripInfoByCustomerMobileNumber(int customerMobileNumber) {
+	public List<TripEndResponse> getTripInfoByCustomerMobileNumber(long customerMobileNumber) {
 
 		CustomerData customerData = customerService.getCustomerDataWithMobileNumber(customerMobileNumber);
-		
-		if(customerData == null){
-			throw new IllegalArgumentException("No User registered with mobilenumber :: "+customerMobileNumber);
+
+		if (customerData == null) {
+			throw new IllegalArgumentException("No User registered with mobilenumber :: " + customerMobileNumber);
 		}
 
 		List<TripsData> tripsData = tripsDataRepository.findByCustomerId(customerData.getCustomerId());
@@ -84,7 +89,6 @@ public class TripsDataService {
 
 		return tripDetails;
 	}
-	
 
 	private TripEndResponse convertTripsDataToTripEndResponse(TripsData tripData) {
 
@@ -102,6 +106,5 @@ public class TripsDataService {
 
 		return tripEndResponse;
 	}
-
 
 }

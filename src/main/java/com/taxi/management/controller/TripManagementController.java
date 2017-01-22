@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.taxi.management.data.TripsData;
 import com.taxi.management.helpers.RequestValidationHelper;
-import com.taxi.management.request.TripEndRequest;
-import com.taxi.management.request.TripEndResponse;
-import com.taxi.management.request.TripStartRequest;
+import com.taxi.management.pojo.TripEndRequest;
+import com.taxi.management.pojo.TripEndResponse;
+import com.taxi.management.pojo.TripStartRequest;
 import com.taxi.management.service.TripManagementService;
 import com.taxi.management.service.TripsDataService;
 

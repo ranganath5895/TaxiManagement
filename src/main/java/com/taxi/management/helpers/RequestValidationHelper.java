@@ -1,8 +1,8 @@
 package com.taxi.management.helpers;
 
 import com.taxi.management.data.CabData;
-import com.taxi.management.request.TripEndRequest;
-import com.taxi.management.request.TripStartRequest;
+import com.taxi.management.pojo.TripEndRequest;
+import com.taxi.management.pojo.TripStartRequest;
 
 public class RequestValidationHelper {
 

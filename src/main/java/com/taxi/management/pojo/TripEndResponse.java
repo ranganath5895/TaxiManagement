@@ -1,4 +1,4 @@
-package com.taxi.management.request;
+package com.taxi.management.pojo;
 
 import java.sql.Timestamp;
 

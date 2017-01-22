@@ -30,4 +30,5 @@ public interface TripsDataRepository extends JpaRepository<TripsData, Integer> {
 	@Query("UPDATE trips_data t SET t.tripKms = :tripkms,t.totalFare = :totalfare,t.tripStatus = :tripstatus WHERE t.tripId = :tripid")
     public int updateCompletedTripInfo(@Param("tripid") int tripid,@Param("tripkms") int tripkms,@Param("totalfare") int totalfare, @Param("tripstatus") String tripStatus);
 	
+	public List<TripsData> findByTripDateBetween(Timestamp tripStartDate,Timestamp tripEndDate);
 }

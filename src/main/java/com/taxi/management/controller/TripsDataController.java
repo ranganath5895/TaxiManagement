@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taxi.management.request.TripEndResponse;
+import com.taxi.management.pojo.TripEndResponse;
 import com.taxi.management.service.TripsDataService;
 
 @RestController
@@ -32,7 +32,7 @@ public class TripsDataController {
 
 	@RequestMapping("/get/details")
 	public List<TripEndResponse> getAllTripsWithCustomerMobileNumber(
-			@RequestParam(value = "customermobilenumber", defaultValue = "9123456789") int customermobilenumber) {
+			@RequestParam(value = "customermobilenumber", defaultValue = "9123456789") long customermobilenumber) {
 
 		return tripsDataService.getTripInfoByCustomerMobileNumber(customermobilenumber);
 	}

@@ -35,7 +35,7 @@ create table trips_data(
 );
 
 create table bills_data(
-	id_bills_data int auto_increment,
+	bills_data_id int auto_increment,
 	customer_id  int,
 	total_kms int,
 	total_fare int,

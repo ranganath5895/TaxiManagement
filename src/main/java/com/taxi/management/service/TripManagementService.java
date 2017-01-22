@@ -14,10 +14,10 @@ import com.taxi.management.data.CustomerData;
 import com.taxi.management.data.TRIP_STATUS;
 import com.taxi.management.data.TripsData;
 import com.taxi.management.helpers.TripChargeCalc;
+import com.taxi.management.pojo.TripEndRequest;
+import com.taxi.management.pojo.TripEndResponse;
+import com.taxi.management.pojo.TripStartRequest;
 import com.taxi.management.repository.TripsDataRepository;
-import com.taxi.management.request.TripEndRequest;
-import com.taxi.management.request.TripEndResponse;
-import com.taxi.management.request.TripStartRequest;
 
 @Service
 public class TripManagementService {
@@ -95,6 +95,7 @@ public class TripManagementService {
 		tripEndResponse.setTripFare(tripTotalFare);
 		tripEndResponse.setTripKms(tripEndRequest.getTripKms());
 		tripEndResponse.setTravelDate(tripData.getTripDate());
+		tripEndResponse.setTripStatus(TRIP_STATUS.TRIP_COMPLETED.getTripStatus());
 
 		return tripEndResponse;
 
